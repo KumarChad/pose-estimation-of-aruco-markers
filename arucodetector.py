@@ -49,6 +49,10 @@ def pose_estimation(frame, aruco_dict_type, matrix_coefficients, distortion_coef
             cv.aruco.drawDetectedMarkers(frame, corners)
 
             cv.drawFrameAxes(frame, matrix_coefficients, distortion_coefficients, rvec, tvec, 0.01)
+
+            distance = np.linalg.norm(tvec[i][0])
+
+            cv.putText(frame, f"Distance: {distance*100} meters", (10,30), cv.FONT_HERSHEY_SIMPLEX, 1, (0,255,0), 2)
     
     return frame
 
